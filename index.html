@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <!--Fontawesome CSS-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!--Other CSS-->
+    <link rel="stylesheet" type="text/css" href="jquery.convform.css" />
+
+    <!--Jquery CDN-->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+
+    <!--Custom JavaScript-->
+    <script type="text/javaScript" src="user.js"></script>
+    <script type="text/javaScript" src="jquery.convform.js"></script>
+
+    <title>Chatbot</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Shirts</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">BestSellers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Nike</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Adidas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">Peter England</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <img
+      src="hangers1.jpg"
+      alt="Shirts in queue"
+      width="100%"
+      style="position: absolute; top: 0"
+    />
+
+    <div class="row container-fluid set1">
+      <div class="col-md-6">
+        <h1>Subscribe to us to stay updated</h1>
+        <div class="col-md-6">
+          <button type="button" class="btn btn-info">Sign Up Now</button>
+        </div>
+      </div>
+    </div>
+    
+
+    <!--Chatbot Icon-->
+    <div class="chat">
+      <i class="fas fa-comment-dots"></i>
+      
+    </div>
+  
+      <!-- function getweather()
+      {
+        var obj=fetch(link).then(res =>{return res.json()});
+        
+        // fetch(link)
+        //   .then(res => res.json())
+        //   .then(data => obj = data)
+        //   .then(() => console.log(obj))
+
+          console.log("obj:",obj);
+        // var resp;
+        // fetch(link,
+        //     {
+        //         method: "GET",
+        //     })
+        //     .then(response => response.json())
+        //     .then(data =>{ 
+        //         console.log("RESPONSE:",data);
+        //         resp=data;
+        //     })
+        //       .catch(err => {
+        //         console.log("err:",err)
+        //       })
+        //       console.log("resp:",resp);
+      } -->
+      
+      
+    <!--Chatbox Pop Up-->
+    <div class="chatbox">
+      <div class="conv-form-wrapper">
+      <form action="" method="GET" class="hidden">
+        
+        <select
+          name="programmer"
+          data-conv-question="Good Morning, Hello (this question will fork the conversation based on your answer)"
+        >
+            <option data-callback="getweather" value="Weather">Weather</option>
+            <!-- <option onselect=getweather() value="Weather">Weather</option> -->
+            <!-- <option value="Weather">Weather</option> -->
+            <option value="Travel">Travel</option>
+        </select>
+        <div data-conv-fork="programmer">
+          <div data-conv-case="Weather">
+
+            <div class="container">
+              <div class="card">
+                <h2><i class="fa fa-map-marker"></i><span id="location"></span></h2>
+            <h6 id="weather"></h6>
+            <h4><span id="temp"></span></h4>
+                <img src="" id="icon">
+            <!-- <button onClick="window.location.reload();" class="refresh"><i class="fa fa-refresh"></i></button> -->
+            <!-- <input
+              type="text"
+              data-conv-question="Weather is good"
+              data-no-answer="true"
+            /> -->
+          </div>
+          </div>
+          </div>
+          <div data-conv-case="Travel">
+            <select
+              name="thought"
+              data-conv-question="Working More on it"
+            >
+              <option value="yes">Yes</option>
+              <option value="no">No..</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+    </div>
+
+    <div class="container-fluid footer">
+      <h6 class="text-center">All Rights Reserved 2021</h6>
+    </div>
+
+
+    <script type="text/javascript">
+    function getweather(stateWrapper, ready)
+      {link = "https://api.openweathermap.org/data/2.5/weather?q=Dehradun&appid=37969c4ac2ffb1556fa98f70426f2e0c";
+      var request = new XMLHttpRequest();
+      request.open('GET',link,true);
+      request.onload = function(){
+       var obj = JSON.parse(this.response);
+       console.log(obj);
+       
+       document.getElementById('weather').innerHTML = obj.weather[0].description;
+       document.getElementById('location').innerHTML = obj.name;
+       document.getElementById('temp').innerHTML = obj.main.temp - 273.15;
+       document.getElementById('icon').src = "http://openweathermap.org/img/w/" + obj.weather[0].icon + ".png";
+      
+       if (request.status >= 200 && request.status < 400) {
+       var temp = obj.main.temp;
+       }
+       else{
+        console.log("The city doesn't exist! Kindly check");
+       }
+      }
+      request.send();
+      ready();
+    }
+      </script>
+    
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
